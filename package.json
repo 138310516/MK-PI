@@ -1,0 +1,36 @@
+{
+  "name": "one-person-company",
+  "version": "0.1.0",
+  "description": "一人公司：单机文件信封、mailbox 与占位岗",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "opc": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/rewrite-dts.mjs",
+    "test": "tsc -p tsconfig.json --noEmit && node --test --test-reporter=spec test/*.test.ts",
+    "opc": "node src/cli.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "typescript": "^5.9.0"
+  }
+}
